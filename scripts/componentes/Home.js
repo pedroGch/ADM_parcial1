@@ -18,7 +18,7 @@ Vue.component('home',{
               Poner a calentar en una sartén o panquequera una cucharada de manteca, esparcir por toda la sartén para que el panqueque no se pegue.
               Luego agregar la mezcla con un cucharón (la cantidad depende del espesor que te guste) y cocinar hasta que veas que se despegan los bordes y se dora, dar vuelta y terminar la cocción.
               Algunas opciones de relleno pueden ser clásico con dulce de leche sin azúcar, mermelada de duraznos light con peras frescas, frutos rojos y todas las que te animes a probar.`,
-              imagen_ruta: "plato_comida.webp",
+              imagen_ruta: "/img/plato_comida.webp",
               alt: ""
             },
             {
@@ -41,7 +41,7 @@ Vue.component('home',{
               Colocar en una sartén la manteca y el aceite. Cuando estén calientes, dorar la cebolla y agregar la harina; añadir revolver un rato y cuando esté todo cocido, añadir el jugo de limón, los hongos con el agua en que han estado en remojo, el perejil, y dejar cocinar 5 ó 10 minutos; si quedara  muy espesa,, agregar un poco más de caldo o agua.
               Nota: Esta salsa es muy rica para acompañar carnes o arroz blanco.
               `,
-              imagen_ruta: "./img/lato_comida.webp",
+              imagen_ruta: "/img/plato_comida.webp",
               alt: ""
             }
           ],
@@ -75,7 +75,7 @@ Vue.component('home',{
                 <span>{{receta.nombre}}</span>
               </div>
               <div class="col-6">
-                <img class="img-fluid" src="./img/plato_comida.webp"">
+                <img class="img-fluid" :src="receta.imagen_ruta">
               </div>
             </div>
             <div class="row">
@@ -104,7 +104,7 @@ Vue.component('home',{
               <span class="p-nombre-receta">{{receta.nombre}}</span>
             </div>
             <div class="col-6">
-              <img class="img-fluid" src="./img/plato_comida.webp">
+              <img class="img-fluid" :src="receta.imagen_ruta">
             </div>
           </div>
           <div class="row">
