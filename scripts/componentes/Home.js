@@ -121,15 +121,16 @@ Vue.component('home',{
             <div class="col-6">
               <span class="p-nombre-receta">{{receta.nombre}}</span>
             </div>
-            <div class="col-6 p-3">
-                <img class="img-fluid img-card-receta" :src="receta.imagen_ruta">
-              </div>
-            </div>
-            <div class="row d-flex justify-content-center">
-              <button class="col-5 p-2 boton-card-receta">Ver más</button>
+            <div class="col-6 img-card-receta">
+              <img class="img-fluid" :src="receta.imagen_ruta">
             </div>
           </div>
+          <div class="row d-flex justify-content-center">
+            <button class="col-5 p-2 boton-card-receta">Ver más</button>
+          </div>
         </div>
+      </div>
+      </div>
 
 
     </div>`,
