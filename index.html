@@ -14,22 +14,31 @@
 </head>
 <body>
   <div id="app">
-    <header class="d-flex flex-row container">
-      <div>
-        <router-link to="/" exact>
-          <img src="./img/icons/home_icon.png" alt="icono home">
-        </router-link>
-      </div>
-      <h1 class="ps-3">Hoy, cocino yo!</h1>
-    </header>
-    <nav>
-      <router-link to="/ingresar_recetar">
-        <div class="boton-home">
-          <img src="./img/icons/add_icon60.png" alt="icono agregar">
-          <p>Nueva receta</p>
+    <div id="contenedor-header">
+      <header class="d-flex container justify-content-center">
+        <div>
+          <router-link to="/home" exact>
+            <img src="./img/icons/home_icon.png" alt="icono home">
+          </router-link>
         </div>
-      </router-link>
-    </nav>
+        <h1 class="ps-3">Hoy, cocino yo!</h1>
+      </header>
+    </div>
+    <div class="container d-flex justify-content-center p-5">
+      <nav>
+        <router-link to="/ingresar_recetar">
+          <div class="boton-home">
+            <img src="./img/icons/add_icon60.png" alt="icono agregar">
+            <p>Nueva receta</p>
+          </div>
+        </router-link>
+      </nav>
+    </div>
+    <div id="card-receta-home">
+      
+
+    </div>
+
     <!-- <home></home> -->
     <transition name="slide-fade" mode="out-in">
   		<router-view></router-view>

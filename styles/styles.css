@@ -4,8 +4,12 @@ body {
     background-color: #F6E4E3;
 }
 
-header {
+#contenedor-header {
     background-color: #F0DEDE;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+header {
     padding: 20px;
 }
 
@@ -24,6 +28,7 @@ header {
     border-radius: 5px;
     margin-left: 10px;
     margin-right: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
 }
 
@@ -35,4 +40,9 @@ h1 {
     text-align: center;
     margin-top: 0;
     margin-bottom: 0;
+}
+
+#card-receta-home {
+    background-color: #FFF0EF;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
