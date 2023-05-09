@@ -54,6 +54,9 @@ Vue.component('home',{
         </div>
 
         <div class="row">
+          <div class="col-12">
+            <h3>Recetas recomendadas</h3>
+          </div>
           <div v-for = "(receta, i) in libroDeCocina" class="col-12 col-lg-4">
             <div class="row">
               <div class="col-12">
@@ -75,6 +78,9 @@ Vue.component('home',{
         </div>
 
         <div class="row">
+        <div class="col-12">
+          <h3>Mis recetas</h3>
+        </div>
         <div v-for = "(receta, i) in miLibroDeRecetas" class="col-12 col-lg-4">
           <div class="row">
             <div class="col-12">
