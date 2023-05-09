@@ -15,7 +15,7 @@ Vue.component('form-recetas',{
           mostrar:true,
           mostrarBoton: false,
           preparacion: "",
-          categoriaSeleccionada: ""
+          categoriaSeleccionada: "",
     }
   },
   template:
@@ -103,7 +103,6 @@ Vue.component('form-recetas',{
             <textarea v-model="preparacion" class="w-100" name="preparacion" placeholder="Preparación"/>
           </div>
         </div>
-
         <div class="row">
         <div class="col-12 mt-5">
           <button class="w-100" v-on:click="guardarReceta">Guardar receta</button>
@@ -164,14 +163,15 @@ Vue.component('form-recetas',{
         nombre: "",
         categoria: "",
         ingredientes: [],
-        preparacion: ""
+        preparacion: "",
+        imagen_ruta: "/img/plato_comida.webp",
+        alt: ""
       }
-
       receta.nombre = this.nombreReceta
       receta.categoria = this.categoriaSeleccionada
       receta.ingredientes = this.ingredientes
       receta.preparacion = this.preparacion
-
+      receta.alt = "imagen representativa de la receta " + receta.nombre
       this.actualizarLocalStorage(receta)
     },
 
