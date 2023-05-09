@@ -1,0 +1,38 @@
+body {
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F6E4E3;
+}
+
+header {
+    background-color: #F0DEDE;
+    padding: 20px;
+}
+
+.boton-home {
+    background-color: #F0DEDE;
+    border: none;
+    color: #111111;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+h1 {
+    font-family: 'Dosis', sans-serif;
+    font-size: 3em;
+    font-weight: 700;
+    color: #111111;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}

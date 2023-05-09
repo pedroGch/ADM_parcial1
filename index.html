@@ -5,17 +5,30 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;700&family=Montserrat:wght@100;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/styles.css">
   <script src="./scripts/vue.js"></script>
-  <title>Vue</title>
+  <title>Hoy, cocino yo!</title>
 </head>
 <body>
   <div id="app">
+    <header class="d-flex flex-row container">
+      <div>
+        <router-link to="/" exact>
+          <img src="./img/icons/home_icon.png" alt="icono home">
+        </router-link>
+      </div>
+      <h1 class="ps-3">Hoy, cocino yo!</h1>
+    </header>
     <nav>
-      <ul>
-        <li><router-link to="/" exact>Home</router-link></li>
-        <li><router-link to="/home" exact>Ingresar</router-link></li>
-        <li><router-link to="/ingresar_recetar">Cagar receta</router-link></li>
-      </ul>
+      <router-link to="/ingresar_recetar">
+        <div class="boton-home">
+          <img src="./img/icons/add_icon60.png" alt="icono agregar">
+          <p>Nueva receta</p>
+        </div>
+      </router-link>
     </nav>
     <!-- <home></home> -->
     <transition name="slide-fade" mode="out-in">
