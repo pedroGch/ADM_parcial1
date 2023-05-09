@@ -1,6 +1,7 @@
 Vue.component('home',{
   data:function(){
     return{
+          miLibroDeRecetas: [],
           libroDeCocina: [
             {
               nombre:"panqueques",
@@ -46,13 +47,70 @@ Vue.component('home',{
   },
   template:
   `
-    <div id="padre">
+    <div class="container" id="padre">
       <div class="row">
         <div class="col-12">
           <h2>Bienvenida {{usuario}} a tu libro de recetas</h2>
         </div>
+
+        <div class="row">
+          <div v-for = "(receta, i) in libroDeCocina" class="col-12 col-lg-4">
+            <div class="row">
+              <div class="col-12">
+                <span>{{receta.categoria}}</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <span>{{receta.nombre}}</span>
+              </div>
+              <div class="col-6">
+                <img class="img-fluid" src="../../img/plato_comida.webp">
+              </div>
+            </div>
+            <div class="row">
+              <button class="col-12">Ver más</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+        <div v-for = "(receta, i) in miLibroDeRecetas" class="col-12 col-lg-4">
+          <div class="row">
+            <div class="col-12">
+              <span>{{receta.categoria}}</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <span>{{receta.nombre}}</span>
+            </div>
+            <div class="col-6">
+              <img class="img-fluid" src="../../img/plato_comida.webp">
+            </div>
+          </div>
+          <div class="row">
+            <button class="col-12">Ver más</button>
+          </div>
+        </div>
+      </div>
       </div>
 
 
-    </div>`
+    </div>`,
+  methods:{
+    actualizarLibroDeRecetas:function (recetario){
+      //aca voy a preguntar si hay algo en el local storage y lo actualizo
+      this.miLibroDeRecetas = recetario
+    }
+  },
+  mounted: function(){ //al insertar al DOM
+    let jsonlibroDeRecetas = localStorage.getItem('libroDeRecetas');
+    console.log(jsonlibroDeRecetas)
+
+    if (jsonlibroDeRecetas != undefined || jsonlibroDeRecetas != undefined){
+      let libroDeRecetas = JSON.parse(jsonlibroDeRecetas)
+      this.actualizarLibroDeRecetas(libroDeRecetas)
+    }
+  },
 });
