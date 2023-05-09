@@ -56,51 +56,77 @@ Vue.component('home',{
         <div class="col-12">
           <h2>Bienvenida {{usuario}} a tu libro de recetas</h2>
         </div>
-
-        <div class="row">
-          <div class="col-12">
-            <h3>Recetas recomendadas</h3>
+        <div class="col-12 div-h3 p-2 mt-5 d-flex">
+          <div class="ps-2 pt-1">
+            <img src="./img/icons/star_icon60.png" alt="icono estrella">
           </div>
-          <div v-for = "(receta, i) in libroDeCocina" class="col-12 col-lg-4">
-            <div class="row">
-              <div class="col-12">
-                <span>{{receta.categoria}}</span>
+          <h3>Recetas recomendadas</h3>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+          <div v-for = "(receta, i) in libroDeCocina" class="col-12 col-lg-4 p-4 m-4 card-receta-home">
+            <div class="row div-categ d-flex">
+              <div class="col-2">
+                <div class="ps-2 pt-1">
+                   <img src="./img/icons/meal_icon80.png" alt="icono cubiertos">
+                </div>
+              </div>
+              <div class="col-10 pt-4">
+                <span class="p-categoria">{{receta.categoria}}</span>
               </div>
             </div>
             <div class="row">
               <div class="col-6">
-                <span>{{receta.nombre}}</span>
+                <span class="p-nombre-receta">{{receta.nombre}}</span>
+                  <div class="row d-flex">
+                    <div class="col-4 pt-4 ms-3">
+                      <p class="me-gusta">Me gusta</p>
+                    </div>
+                    <div class="col-7 pt-3">
+                      <img src="./img/icons/heart_icon.png" alt="icono estrella">
+                    </div>
+                  </div>
               </div>
-              <div class="col-6">
-                <img class="img-fluid" :src="receta.imagen_ruta">
+              <div class="col-6 p-3">
+                <img class="img-fluid img-card-receta" :src="receta.imagen_ruta">
               </div>
             </div>
-            <div class="row">
-              <button class="col-12">Ver más</button>
+            <div class="row d-flex justify-content-center">
+              <button class="col-5 p-2 boton-card-receta">Ver más</button>
             </div>
           </div>
         </div>
 
         <div class="row">
-        <div class="col-12">
+        <div class="col-12 div-h3 p-2 mt-5 d-flex">
+          <div class="ps-2 pt-1">
+            <img src="./img/icons/star_icon60.png" alt="icono estrella">
+          </div>
           <h3>Mis recetas</h3>
         </div>
-        <div v-for = "(receta, i) in miLibroDeRecetas" class="col-12 col-lg-4">
-          <div class="row">
-            <div class="col-12">
-              <span>{{receta.categoria}}</span>
+        </div>
+        <div class="row d-flex justify-content-center">
+        <div v-for = "(receta, i) in miLibroDeRecetas" class="col-12 col-lg-4 p-4 m-4 card-receta-home">
+          <div class="row  div-categ d-flex">
+             <div class="col-2">
+                <div class="ps-2 pt-1">
+                   <img src="./img/icons/meal_icon80.png" alt="icono cubiertos">
+                </div>
+              </div>
+              <div class="col-10 pt-4">
+              <span class="p-categoria">{{receta.categoria}}</span>
             </div>
           </div>
           <div class="row">
             <div class="col-6">
-              <span>{{receta.nombre}}</span>
+              <span class="p-nombre-receta">{{receta.nombre}}</span>
             </div>
-            <div class="col-6">
+            <div class="col-6 img-card-receta">
               <img class="img-fluid" :src="receta.imagen_ruta">
             </div>
           </div>
-          <div class="row">
-            <button class="col-12">Ver más</button>
+          <div class="row d-flex justify-content-center">
+            <button class="col-5 p-2 boton-card-receta">Ver más</button>
           </div>
         </div>
       </div>

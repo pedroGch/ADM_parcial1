@@ -9,12 +9,17 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
+.div-h3 {
+    background-color: #775653;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
 header {
     padding: 20px;
 }
 
 .boton-home {
-    background-color: #F0DEDE;
+    background-color: #FFF0EF;
     border: none;
     color: #111111;
     padding: 10px 20px;
@@ -25,7 +30,7 @@ header {
     font-weight: 700;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-left: 10px;
     margin-right: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -42,7 +47,66 @@ h1 {
     margin-bottom: 0;
 }
 
-#card-receta-home {
+h2 {
+    font-family: 'Dosis', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111111;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #F3F6F9;
+    padding: 1rem 0 1rem 1rem;
+}
+
+.card-receta-home {
     background-color: #FFF0EF;
+    border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.p-categoria {
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #775653;
+    padding: 1rem 0 1rem 1rem;
+}
+
+.p-nombre-receta {
+    font-family: 'Dosis', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: #111111;
+    padding: 1rem 0 1rem 1rem;
+}
+.me-gusta {
+        font-weight: 600;
+}
+
+.img-card-receta {
+    border-radius: 10px;
+
+}
+
+.div-categ {
+    background-color: #F0DEDE;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.boton-card-receta {
+    background-color: #775653;
+    border-radius: 10px;
+    color: #F3F6F9;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 1rem;
 }
