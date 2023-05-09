@@ -65,7 +65,7 @@ h3 {
     padding: 1rem 0 1rem 1rem;
 }
 
-#card-receta-home {
+.card-receta-home {
     background-color: #FFF0EF;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -74,9 +74,9 @@ h3 {
 .p-categoria {
 
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 600;
-    color: #111111;
+    color: #775653;
     padding: 1rem 0 1rem 1rem;
 }
 
@@ -87,8 +87,26 @@ h3 {
     color: #111111;
     padding: 1rem 0 1rem 1rem;
 }
+.me-gusta {
+        font-weight: 600;
+}
 
 .img-card-receta {
+    border-radius: 10px;
 
+}
 
+.div-categ {
+    background-color: #F0DEDE;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.boton-card-receta {
+    background-color: #775653;
+    border-radius: 10px;
+    color: #F3F6F9;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 1rem;
 }
