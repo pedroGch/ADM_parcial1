@@ -56,12 +56,15 @@ Vue.component('home',{
         <div class="col-12">
           <h2>Bienvenida {{usuario}} a tu libro de recetas</h2>
         </div>
-
-        <div class="row">
-          <div class="col-12">
-            <h3>Recetas recomendadas</h3>
+        <div class="col-12 div-h3 p-2 mt-5 d-flex">
+          <div class="ps-2 pt-1">
+            <img src="./img/icons/star_icon60.png" alt="icono estrella">
           </div>
-          <div v-for = "(receta, i) in libroDeCocina" class="col-12 col-lg-4">
+          <h3>Recetas recomendadas</h3>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+          <div v-for = "(receta, i) in libroDeCocina" class="col-12 col-lg-4 p-4 m-4" id="card-receta-home">
             <div class="row">
               <div class="col-12">
                 <span>{{receta.categoria}}</span>
@@ -82,18 +85,23 @@ Vue.component('home',{
         </div>
 
         <div class="row">
-        <div class="col-12">
+        <div class="col-12 div-h3 p-2 mt-5 d-flex">
+          <div class="ps-2 pt-1">
+            <img src="./img/icons/star_icon60.png" alt="icono estrella">
+          </div>
           <h3>Mis recetas</h3>
         </div>
-        <div v-for = "(receta, i) in miLibroDeRecetas" class="col-12 col-lg-4">
+        </div>
+        <div class="row d-flex justify-content-center">
+        <div v-for = "(receta, i) in miLibroDeRecetas" class="col-12 col-lg-4 p-4 m-4" id="card-receta-home">
           <div class="row">
             <div class="col-12">
-              <span>{{receta.categoria}}</span>
+              <span class="p-categoria">{{receta.categoria}}</span>
             </div>
           </div>
           <div class="row">
             <div class="col-6">
-              <span>{{receta.nombre}}</span>
+              <span class="p-nombre-receta">{{receta.nombre}}</span>
             </div>
             <div class="col-6">
               <img class="img-fluid" src="./img/plato_comida.webp">
