@@ -54,7 +54,7 @@ Vue.component('home',{
     <div class="container" id="padre">
       <div class="row">
         <div class="col-12">
-          <h2>Bienvenida {{usuario}} a tu libro de recetas</h2>
+          <h2>Bienvenida {{usuario | mayuscula}} a tu libro de recetas</h2>
         </div>
         <div class="col-12 div-h3 p-2 mt-5 d-flex">
           <div class="ps-2 pt-1">
@@ -149,4 +149,10 @@ Vue.component('home',{
       this.actualizarLibroDeRecetas(libroDeRecetas)
     }
   },
+  filters:{
+    mayuscula:function (value){
+      if (!value) return "";
+      return value.toUpperCase();
+    }
+  }
 });
