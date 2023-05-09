@@ -10,10 +10,12 @@ Vue.component('form-recetas',{
           nombreReceta: "",
           ingredientes: [],
           nombre_ingrediente: "",
-          cantidad_ingrediente: 0,
-          unidad_nombre: 0,
+          cantidad_ingrediente: "",
+          unidad_nombre: "",
           mostrar:true,
-          mostrarBoton: false
+          mostrarBoton: false,
+          preparacion: "",
+          categoriaSeleccionada: ""
     }
   },
   template:
@@ -34,7 +36,7 @@ Vue.component('form-recetas',{
         </div>
 
         <div class="col-12 mb-3">
-          <select name="categoria">
+          <select name="categoria" v-model="categoriaSeleccionada">
             <option>Dulces</option>
             <option>Salados</option>
             <option>Fit</option>
@@ -46,8 +48,15 @@ Vue.component('form-recetas',{
             <h2>Lista de ingredientes</h2>
           </div> 
           <ul>
-            <li v-for= "i in ingredientes">
-              {{i.nombre}} {{i.cantidad}} {{i.unidad}}
+            <li v-for= "(i, key) in ingredientes">
+              <div class="row">
+                <div class="col-6">
+                  {{i.nombre}} {{i.cantidad}} {{i.unidad}}
+                </div>
+                <div class="col-6">
+                  <button v-on:click="eliminarIngrediente(key)">x</button>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
@@ -80,7 +89,7 @@ Vue.component('form-recetas',{
             </div>
 
             <div class="col-6 mt-3">
-              <input v-on:click="limpiarCampos" type="reset" value="cancelar">
+              <input v-on:click="limpiarCamposIngredientes" type="reset" value="cancelar">
             </div>
           </form>
 
@@ -88,6 +97,19 @@ Vue.component('form-recetas',{
             <button v-on:click="mostrarForm">Agregar nuevo ingrediente</button>
           </div>
         </div>  
+
+        <div class="row">
+          <div class="col-12 mt-3">
+            <textarea v-model="preparacion" class="w-100" name="preparacion" placeholder="Preparación"/>
+          </div>
+        </div>
+
+        <div class="row">
+        <div class="col-12 mt-5">
+          <button class="w-100" v-on:click="guardarReceta">Guardar receta</button>
+        </div>
+      </div>
+
       </div>
     </div>`,
   methods:{
@@ -103,17 +125,69 @@ Vue.component('form-recetas',{
       this.mostrar = !this.mostrar
       this.mostrarBoton = !this.mostrarBoton
 
-      this.limpiarCampos
+      this.limpiarCamposIngredientes()
     },
     mostrarForm:function () {
       this.mostrar = !this.mostrar
       this.mostrarBoton = !this.mostrarBoton
     },
 
-    limpiarCampos:function(){
+    limpiarCamposIngredientes:function(){
       this.nombre_ingrediente = ""
-      this.cantidad_ingrediente = 0
+      this.cantidad_ingrediente = ""
       this.unidad_nombre = ""
+      
+    },
+
+    limpiarTodosLosCampos:function (){
+      this.limpiarCamposIngredientes()
+      this.categoriaSeleccionada = ""
+      this.nombreReceta = ""
+      this.preparacion = ""
+      this.ingredientes = []
+
+    },
+
+    eliminarIngrediente:function (indice){
+      console.log(indice)
+      if (indice == 0){
+        this.ingredientes.splice(indice, 1)
+      }else if (indice == this.ingredientes.length){
+        this.ingredientes.pop();
+      }
+      this.ingredientes.splice(indice, indice)
+
+    },
+
+    guardarReceta:function (){
+      let receta = {
+        nombre: "",
+        categoria: "",
+        ingredientes: [],
+        preparacion: ""
+      }
+
+      receta.nombre = this.nombreReceta
+      receta.categoria = this.categoriaSeleccionada
+      receta.ingredientes = this.ingredientes
+      receta.preparacion = this.preparacion
+
+      this.actualizarLocalStorage(receta)
+    },
+
+    actualizarLocalStorage:function (unaReceta){
+      let libroDeRecetas = [];
+      let jsonlibroDeRecetas = localStorage.getItem('libroDeRecetas');
+      if (jsonlibroDeRecetas != undefined){
+        libroDeRecetas = JSON.parse(jsonlibroDeRecetas);
+      }
+
+      libroDeRecetas.push(unaReceta);
+      localStorage.setItem('libroDeRecetas', JSON.stringify(libroDeRecetas));
+
+      this.limpiarCamposIngredientes()
+      this.limpiarTodosLosCampos()
+
     }
   }  
 });
