@@ -16,7 +16,22 @@ Vue.component('form-recetas',{
           mostrarBoton: false,
           preparacion: "",
           categoriaSeleccionada: "",
+          errores: {
+            "nombre": "",
+            "ingredientes": "",
+            "categoria": "",
+            "preparacion": "",
+          },
+          err_nombre:"",
+          err_ingredientes: "",
+          err_categoria: "",
+          err_preparacion: ""
     }
+  },
+  computed: {
+    existenErrores: function(){
+      return this.errores.length
+    }  
   },
   template:
   `
@@ -32,6 +47,7 @@ Vue.component('form-recetas',{
           <div class="form-floating">
             <input class="form-control" v-model="nombreReceta" type="text" name="nombre_receta" id="nombre_receta" placeholder="Nombre de la receta">
             <label class="form-label" for="nombre_receta">Nombre de la receta</label>
+            <span>{{err_nombre}}</span>
           </div>
         </div>
 
@@ -41,6 +57,7 @@ Vue.component('form-recetas',{
             <option>Salados</option>
             <option>Fit</option>
           </select>
+          <span>{{err_categoria}}</span>
         </div>  
 
         <div class="row mb-3">
@@ -91,8 +108,9 @@ Vue.component('form-recetas',{
             <div class="col-6 mt-3">
               <input v-on:click="limpiarCamposIngredientes" type="reset" value="cancelar">
             </div>
-          </form>
 
+          </form>
+          <span>{{err_ingredientes}}</span>
           <div v-if="mostrarBoton" class="col-12 mt-3">
             <button v-on:click="mostrarForm">Agregar nuevo ingrediente</button>
           </div>
@@ -102,6 +120,7 @@ Vue.component('form-recetas',{
           <div class="col-12 mt-3">
             <textarea v-model="preparacion" class="w-100" name="preparacion" placeholder="Preparación"/>
           </div>
+          <span>{{err_preparacion}}</span>
         </div>
         <div class="row">
         <div class="col-12 mt-5">
@@ -159,6 +178,7 @@ Vue.component('form-recetas',{
     },
 
     guardarReceta:function (){
+      this.recetErrores();
       let receta = {
         nombre: "",
         categoria: "",
@@ -167,12 +187,19 @@ Vue.component('form-recetas',{
         imagen_ruta: "/img/plato_comida.webp",
         alt: ""
       }
-      receta.nombre = this.nombreReceta
-      receta.categoria = this.categoriaSeleccionada
-      receta.ingredientes = this.ingredientes
-      receta.preparacion = this.preparacion
-      receta.alt = "imagen representativa de la receta " + receta.nombre
-      this.actualizarLocalStorage(receta)
+      console.log(this.validarFormulario())
+      if (this.validarFormulario()){
+        receta.nombre = this.nombreReceta
+        receta.categoria = this.categoriaSeleccionada
+        receta.ingredientes = this.ingredientes
+        receta.preparacion = this.preparacion
+        receta.alt = "imagen representativa de la receta " + receta.nombre
+        this.actualizarLocalStorage(receta)
+      }else{
+        this.mostrarErrores()
+      }
+
+      
     },
 
     actualizarLocalStorage:function (unaReceta){
@@ -188,6 +215,39 @@ Vue.component('form-recetas',{
       this.limpiarCamposIngredientes()
       this.limpiarTodosLosCampos()
 
+    },
+    validarFormulario: function (){
+      let bandera = true
+      if (this.nombreReceta == ""){
+        bandera = false
+        this.errores.nombre = 'El nombre de la receta es obligatorio.'
+      }
+      if(this.ingredientes.length <= 1 ){
+        bandera = false
+        this.errores.ingredientes = 'Debe ingresar más de un elemento.'
+      }
+      if(this.categoria == ""){
+        bandera = false
+        this.errores.categoria = 'Se debe seleccionar una categoria.'
+      }
+      if(this.preparacion == ""){
+        bandera = false
+        this.errores.preparacion = 'Es necesario que se describa la preparación.'
+      }
+      return bandera
+
+    },
+    mostrarErrores: function(){
+      this.err_nombre = this.errores["nombre"]
+      this.err_categoria = this.errores["categoria"]
+      this.err_ingredientes = this.errores["ingredientes"]
+      this.err_preparacion = this.errores["preparacion"]
+    },
+    recetErrores: function (){
+      this.errores.nombre = ""
+      this.errores.ingredientes = ""
+      this.errores.categoria = ""
+      this.errores.preparacion = ""
     }
-  }  
+  }
 });
