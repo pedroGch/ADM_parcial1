@@ -229,7 +229,11 @@ Vue.component('form-recetas',{
         receta.ingredientes = this.ingredientes
         receta.preparacion = this.preparacion
         receta.alt = "imagen representativa de la receta " + receta.nombre
-        receta.imagen_ruta = this.imagen_receta
+        if (this.imagen_receta){
+          receta.imagen_ruta = this.imagen_receta
+        }else{
+          receta.imagen_ruta = "/img/receta-predeterminada.jpg"
+        }
         this.actualizarLocalStorage(receta)
         this.mostrarCartelExito()
       }else{

@@ -194,6 +194,16 @@ textarea {
     }
 }
 
+.sombraError{
+    box-shadow: -2px 1px 45px 0px rgba(168,13,13,0.75);
+    -webkit-box-shadow: -2px 1px 45px 0px rgba(168,13,13,0.75);
+    -moz-box-shadow: -2px 1px 45px 0px rgba(168,13,13,0.75);
+}
+
+.textoError{
+    color: rgba(168,13,13,0.75);
+}
+
 /*Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
     .p-categoria {
