@@ -137,7 +137,7 @@ Vue.component('home',{
             </div>
           </div>
           <div class="row d-flex justify-content-center">
-            <button class="col-5 p-2 boton-card-receta" data-bs-toggle="modal" data-bs-target="#exampleModal">Ver más</button>
+            <button class="col-5 p-2 boton-card-receta" data-bs-toggle="modal" data-bs-target="#modalReceta"  @click="seleccionarReceta(receta)" >Ver más</button>
           </div>
         </div>
       </div>
