@@ -144,6 +144,25 @@ Vue.component('form-recetas',{
         </div>
       </div>
       </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="modalCartelExito" tabindex="-1" aria-labelledby="modalDeExito" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-12">
+                  <p>Tu receta fue cargada con exito</p>
+                </div>
+              </div>  
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="boton-card-receta" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>`,
   methods:{
     ingresarIngrediente:function () {
@@ -203,7 +222,7 @@ Vue.component('form-recetas',{
         alt: ""
         
       }
-      console.log(this.validarFormulario())
+  
       if (this.validarFormulario()){
         receta.nombre = this.nombreReceta
         receta.categoria = this.categoriaSeleccionada
@@ -212,6 +231,7 @@ Vue.component('form-recetas',{
         receta.alt = "imagen representativa de la receta " + receta.nombre
         receta.imagen_ruta = this.imagen_receta
         this.actualizarLocalStorage(receta)
+        this.mostrarCartelExito()
       }else{
         this.mostrarErrores()
       }
@@ -269,12 +289,19 @@ Vue.component('form-recetas',{
     subirImagen:function (file){
 
       const fileReader = new FileReader();
-      fileReader.readAsDataURL(file.target.files[0]);
+      fileReader.readAsDataURL(file.target.files[0])
 
       fileReader.onload = (event) => {
-        this.imagen_receta = event.target.result;
+        this.imagen_receta = event.target.result
         
       };
+    },
+    mostrarCartelExito: function(){
+      let cartelModal = new bootstrap.Modal(document.getElementById("modalCartelExito"), {});
+      cartelModal.show();
+      setTimeout(() => {
+        cartelModal.hide();
+      }, 5000);
     }
   }
 });

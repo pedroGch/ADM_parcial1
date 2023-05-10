@@ -164,7 +164,7 @@ Vue.component('home',{
 
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="reiniciarIngredientes">Cerrar</button>
+              <button type="button" class="boton-card-receta" data-bs-dismiss="modal" @click="reiniciarIngredientes">Cerrar</button>
             </div>
           </div>
         </div>
