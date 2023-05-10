@@ -59,7 +59,7 @@ Vue.component('form-recetas',{
         <div  :class="{sombraError:sombraError}"  class="col-12 mb-3">
           <div class="form-floating">
             <select name="categoria" id="categoriaSelect" v-model="categoriaSeleccionada" class="form-select" aria-label="Categoria">
-              <option selected value="Categoria">Categoria</option>
+              <option selected disabled value="Categoria">Categoria</option>
               <option>Dulces</option>
               <option>Salados</option>
               <option>Fit</option>              
@@ -170,21 +170,46 @@ Vue.component('form-recetas',{
           </div>
         </div>
       </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="errorIngrediente" tabindex="-1" aria-labelledby="modalDeError" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-12">
+                  <p>Se debe ingresar todos los datos de los ingredientes</p>
+                </div>
+              </div>  
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="boton-card-receta" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>`,
   methods:{
     ingresarIngrediente:function () {
 
+      
       ing = {}
-      ing.nombre = this.nombre_ingrediente
-      ing.cantidad = this.cantidad_ingrediente
-      ing.unidad = this.unidad_nombre
+      if (this.nombre_ingrediente != "" && this.cantidad_ingrediente != "" && this.unidad_nombre != ""){
+        ing.nombre = this.nombre_ingrediente
+        ing.cantidad = this.cantidad_ingrediente
+        ing.unidad = this.unidad_nombre
 
-      this.ingredientes.push(ing)
+        this.ingredientes.push(ing)
 
-      this.mostrar = !this.mostrar
-      this.mostrarBoton = !this.mostrarBoton
+        this.mostrar = !this.mostrar
+        this.mostrarBoton = !this.mostrarBoton
 
-      this.limpiarCamposIngredientes()
+        this.limpiarCamposIngredientes()
+      }else{
+        this.imprimirFaltaIngrediente()
+      }
+      
     },
     mostrarForm:function () {
       this.mostrar = !this.mostrar
@@ -319,6 +344,13 @@ Vue.component('form-recetas',{
       setTimeout(() => {
         cartelModal.hide();
       }, 5000);
+    },
+    imprimirFaltaIngrediente: function(){
+      let cartelModal = new bootstrap.Modal(document.getElementById("errorIngrediente"), {backdrop: 'static', keyboard: false});
+      cartelModal.show();
+      setTimeout(() => {
+        cartelModal.hide();
+      }, 3500);
     }
   }
 });
