@@ -4,8 +4,8 @@ Vue.component('home',{
           miLibroDeRecetas: [],
           libroDeCocina: [
             {
-              nombre:"Panqueques",
-              categoria:"Dulces",
+              nombre:"panqueques",
+              categoria:"dulces",
               ingredientes:[
                 {"nombre":"huevo", "cantidad": "3", "unidad":"Unidades"},
                 {"nombre":"azúcar Hileret Light", "cantidad": "1", "unidad":"cucharada"},
@@ -13,7 +13,7 @@ Vue.component('home',{
                 {"nombre":"harina 0000", "cantidad": "1", "unidad":"taza"},
                 {"nombre":"sal", "cantidad": "1", "unidad":"pizca"}
               ],
-              preparacion: `Mezclar los huevos con el azúcar Hileret Light, incorporar la leche y la pizca de sal.
+              preparacion: `mezclar los huevos con el azúcar Hileret Light, incorporar la leche y la pizca de sal.
               Por último, agregar de a poco la harina para que no se formen grumos.
               Poner a calentar en una sartén o panquequera una cucharada de manteca, esparcir por toda la sartén para que el panqueque no se pegue.
               Luego agregar la mezcla con un cucharón (la cantidad depende del espesor que te guste) y cocinar hasta que veas que se despegan los bordes y se dora, dar vuelta y terminar la cocción.
@@ -22,8 +22,8 @@ Vue.component('home',{
               alt: "imagen de de panqueques"
             },
             {
-              nombre:"Salsa de hongos de pino",
-              categoria:"Salados",
+              nombre:"salsa de hongos de pino",
+              categoria:"salados",
               ingredientes: [
                 {"nombre": "cebolla", "cantidad": "1", "unidad": "unidad"},
                 {"nombre": "manteca", "cantidad": "25", "unidad": "gr"},
@@ -37,7 +37,7 @@ Vue.component('home',{
                 {"nombre": "pimienta", "cantidad": "1", "unidad": "cucharadita"},
                 {"nombre": "mostaza", "cantidad": "1", "unidad": "cucharada"}
               ],
-              preparacion: `Poner a remojar en la taza de agua los hongos y picar finamente el prejil.
+              preparacion: `poner a remojar en la taza de agua los hongos y picar finamente el prejil.
               Colocar en una sartén la manteca y el aceite. Cuando estén calientes, dorar la cebolla y agregar la harina; añadir revolver un rato y cuando esté todo cocido, añadir el jugo de limón, los hongos con el agua en que han estado en remojo, el perejil, y dejar cocinar 5 ó 10 minutos; si quedara  muy espesa,, agregar un poco más de caldo o agua.
               Nota: Esta salsa es muy rica para acompañar carnes o arroz blanco.
               `,
@@ -68,16 +68,16 @@ Vue.component('home',{
             <div class="row div-categ d-flex">
               <div class="col-5 col-sm-2">
                 <div class="ps-2 pt-1">
-                   <img src="./img/icons/meal_icon80.png" alt="icono cubiertos">
+                  <img src="./img/icons/meal_icon80.png" alt="icono cubiertos">
                 </div>
               </div>
               <div class="col-7 col-sm-10 pt-4">
-                <span class="p-categoria">{{receta.categoria}}</span>
+                <span class="p-categoria">{{receta.categoria | mayusculaPrimeraLetra}}</span>
               </div>
             </div>
             <div class="row d-flex">
               <div class="col-12 order-2 order-lg-1">
-                <span class="p-nombre-receta">{{receta.nombre}}</span>
+                <span class="p-nombre-receta">{{receta.nombre | mayuscula}}</span>
                   <div class="row d-flex pb-3 pe-2">
                     <div class="col-8 col-md-4 pt-4">
                       <p class="me-gusta">Me gusta</p>
@@ -114,12 +114,12 @@ Vue.component('home',{
                 </div>
               </div>
               <div class="col-7 col-sm-10 pt-4">
-              <span class="p-categoria">{{receta.categoria}}</span>
+              <span class="p-categoria">{{receta.categoria | mayusculaPrimeraLetra}}</span>
             </div>
           </div>
           <div class="row">
             <div class="col-6">
-              <span class="p-nombre-receta">{{receta.nombre}}</span>
+              <span class="p-nombre-receta">{{receta.nombre | mayuscula}}</span>
             </div>
             <div class="col-6 p-3">
               <img class="img-fluid img-card-receta" :src="receta.imagen_ruta">
@@ -154,5 +154,9 @@ Vue.component('home',{
       if (!value) return "";
       return value.toUpperCase();
     }
+  },
+  mayusculaPrimeraLetra: function (texto){
+    if (!texto) return "";
+    return texto.charAt(0).toUpperCase() + texto.slice(1)
   }
 });
