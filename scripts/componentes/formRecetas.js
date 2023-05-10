@@ -2,10 +2,12 @@ Vue.component('form-recetas',{
   data:function(){
     return{
           unidades:[
+            {"nombre": "a gusto" , "id": 0},
             {"nombre": "kg" , "id": 1},
             {"nombre": "Un" , "id": 2},
             {"nombre": "gr" , "id": 3},
-            {"nombre": "ltr" , "id": 4}
+            {"nombre": "lt" , "id": 4},
+            {"nombre": "ml" , "id": 5},
           ],
           nombreReceta: "",
           ingredientes: [],
@@ -52,11 +54,15 @@ Vue.component('form-recetas',{
         </div>
 
         <div class="col-12 mb-3">
-          <select name="categoria" v-model="categoriaSeleccionada">
-            <option>Dulces</option>
-            <option>Salados</option>
-            <option>Fit</option>
-          </select>
+          <div class="form-floating">
+            <select name="categoria" id="categoriaSelect" v-model="categoriaSeleccionada" class="form-select" aria-label="Categoria">
+              <option selected value="Categoria">Categoria</option>
+              <option>Dulces</option>
+              <option>Salados</option>
+              <option>Fit</option>              
+            </select>
+            <label for="categoriaSelect">Seleccione una categoria</label>
+          </div>
           <span>{{err_categoria}}</span>
         </div>  
 
@@ -96,9 +102,13 @@ Vue.component('form-recetas',{
             </div>
 
             <div class="col-3">
-              <select name="categoria" v-model="unidad_nombre">
-                <option v-for = "u in unidades">{{u.nombre}}</option>
-              </select>
+              <div class="form-floating">
+                <select name="unidadSelect" id="unidadSelect" v-model="unidad_nombre" class="form-select" aria-label="Categoria">
+                  <option selected disabled>medida</option>
+                  <option v-for = "u in unidades">{{u.nombre}}</option>
+                </select>
+                <label for="unidadSelect">Unidad</label>
+              </div>  
             </div>            
           
             <div class="col-6 mt-3">
