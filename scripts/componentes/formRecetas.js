@@ -37,10 +37,10 @@ Vue.component('form-recetas',{
   },
   template:
   `
-    <div id="calificar">
-      <div class="container">
+    <div id="calificar" class="d-flex">
+      <div class="container card-ingresar-receta p-4 mx-2">
         <div class= "row">
-          <div class="col-12 text-center">
+          <div class="col-12 text-center pb-3">
             <h2>Ingresar Receta</h2>
           </div>  
         </div>    
