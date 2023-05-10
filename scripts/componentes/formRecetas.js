@@ -27,7 +27,8 @@ Vue.component('form-recetas',{
           err_nombre:"",
           err_ingredientes: "",
           err_categoria: "",
-          err_preparacion: ""
+          err_preparacion: "",
+          imagen_receta: null
     }
   },
   computed: {
@@ -132,12 +133,15 @@ Vue.component('form-recetas',{
           </div>
           <span>{{err_preparacion}}</span>
         </div>
+        <div class="col-12 mt-5">
+          <input type="file" @change="subirImagen($event)">
+        </div>
+        
         <div class="row">
         <div class="col-12 mt-5">
           <button class="w-100" v-on:click="guardarReceta">Guardar receta</button>
         </div>
       </div>
-
       </div>
     </div>`,
   methods:{
@@ -194,8 +198,9 @@ Vue.component('form-recetas',{
         categoria: "",
         ingredientes: [],
         preparacion: "",
-        imagen_ruta: "/img/receta-predeterminada.jpg",
+        imagen_ruta: null,
         alt: ""
+        
       }
       console.log(this.validarFormulario())
       if (this.validarFormulario()){
@@ -204,6 +209,7 @@ Vue.component('form-recetas',{
         receta.ingredientes = this.ingredientes
         receta.preparacion = this.preparacion
         receta.alt = "imagen representativa de la receta " + receta.nombre
+        receta.imagen_ruta = this.imagen_receta
         this.actualizarLocalStorage(receta)
       }else{
         this.mostrarErrores()
@@ -258,6 +264,16 @@ Vue.component('form-recetas',{
       this.errores.ingredientes = ""
       this.errores.categoria = ""
       this.errores.preparacion = ""
+    },
+    subirImagen:function (file){
+
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file.target.files[0]);
+
+      fileReader.onload = (event) => {
+        this.imagen_receta = event.target.result;
+        
+      };
     }
   }
 });
