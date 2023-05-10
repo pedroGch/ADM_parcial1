@@ -19,7 +19,7 @@ Vue.component('home',{
               Luego agregar la mezcla con un cucharón (la cantidad depende del espesor que te guste) y cocinar hasta que veas que se despegan los bordes y se dora, dar vuelta y terminar la cocción.
               Algunas opciones de relleno pueden ser clásico con dulce de leche sin azúcar, mermelada de duraznos light con peras frescas, frutos rojos y todas las que te animes a probar.`,
               imagen_ruta: "/img/panqueque.jpg",
-              alt: ""
+              alt: "imagen de de panqueques"
             },
             {
               nombre:"salsa de hongos de pino",
@@ -42,7 +42,7 @@ Vue.component('home',{
               Nota: Esta salsa es muy rica para acompañar carnes o arroz blanco.
               `,
               imagen_ruta: "/img/salsa_hongos.jpg",
-              alt: ""
+              alt: "imagen ilustrativa de salsa de hongos de pino"
             }
           ],
           usuario: "mabel",
