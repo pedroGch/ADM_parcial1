@@ -194,7 +194,7 @@ Vue.component('form-recetas',{
         categoria: "",
         ingredientes: [],
         preparacion: "",
-        imagen_ruta: "/img/plato_comida.webp",
+        imagen_ruta: "/img/receta-predeterminada.jpg",
         alt: ""
       }
       console.log(this.validarFormulario())

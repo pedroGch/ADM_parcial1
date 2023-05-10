@@ -4,8 +4,8 @@ Vue.component('home',{
           miLibroDeRecetas: [],
           libroDeCocina: [
             {
-              nombre:"panqueques",
-              categoria:"dulces",
+              nombre:"Panqueques",
+              categoria:"Dulces",
               ingredientes:[
                 {"nombre":"huevo", "cantidad": "3", "unidad":"Unidades"},
                 {"nombre":"azúcar Hileret Light", "cantidad": "1", "unidad":"cucharada"},
@@ -22,8 +22,8 @@ Vue.component('home',{
               alt: "imagen de de panqueques"
             },
             {
-              nombre:"salsa de hongos de pino",
-              categoria:"salados",
+              nombre:"Salsa de hongos de pino",
+              categoria:"Salados",
               ingredientes: [
                 {"nombre": "cebolla", "cantidad": "1", "unidad": "unidad"},
                 {"nombre": "manteca", "cantidad": "25", "unidad": "gr"},
