@@ -52,7 +52,7 @@ Vue.component('home',{
   template:
   `
     <div class="container" id="padre">
-      <div class="row">
+      <div class="row justify-content-center">
         <div class="col-12">
           <h2>Bienvenida {{usuario | mayuscula}} a tu libro de recetas</h2>
         </div>
@@ -63,31 +63,31 @@ Vue.component('home',{
           <h3>Recetas recomendadas</h3>
         </div>
 
-        <div class="row d-flex justify-content-center">
-          <div v-for = "(receta, i) in libroDeCocina" class="col-12 col-lg-4 p-4 m-4 card-receta-home">
+        <div class="row d-flex justify-content-center ">
+          <div v-for = "(receta, i) in libroDeCocina" class="col-12 col-lg-4 p-4 my-3 m-md-4 card-receta-home">
             <div class="row div-categ d-flex">
-              <div class="col-2">
+              <div class="col-5 col-sm-2">
                 <div class="ps-2 pt-1">
                    <img src="./img/icons/meal_icon80.png" alt="icono cubiertos">
                 </div>
               </div>
-              <div class="col-10 pt-4">
+              <div class="col-7 col-sm-10 pt-4">
                 <span class="p-categoria">{{receta.categoria}}</span>
               </div>
             </div>
-            <div class="row">
-              <div class="col-6">
+            <div class="row d-flex">
+              <div class="col-12 order-2 order-lg-1">
                 <span class="p-nombre-receta">{{receta.nombre}}</span>
-                  <div class="row d-flex">
-                    <div class="col-4 pt-4 ms-3">
+                  <div class="row d-flex pb-3 pe-2">
+                    <div class="col-8 col-md-4 pt-4">
                       <p class="me-gusta">Me gusta</p>
                     </div>
-                    <div class="col-7 pt-3">
-                      <img src="./img/icons/heart_icon.png" alt="icono estrella">
+                    <div class="col-4 col-md-7 pt-3 icono-corazon">
+                      <img src="./img/icons/heart_icon.png" alt="icono corazon">
                     </div>
                   </div>
               </div>
-              <div class="col-6 p-3">
+              <div class="col-12 p-3 order-1 order-lg-2">
                 <img class="img-fluid img-card-receta" :src="receta.imagen_ruta">
               </div>
             </div>
@@ -97,7 +97,7 @@ Vue.component('home',{
           </div>
         </div>
 
-        <div class="row">
+        <div class="row justify-content-center">
         <div class="col-12 div-h3 p-2 mt-5 d-flex">
           <div class="ps-2 pt-1">
             <img src="./img/icons/star_icon60.png" alt="icono estrella">
@@ -106,14 +106,14 @@ Vue.component('home',{
         </div>
         </div>
         <div class="row d-flex justify-content-center">
-        <div v-for = "(receta, i) in miLibroDeRecetas" class="col-12 col-lg-4 p-4 m-4 card-receta-home">
+        <div v-for = "(receta, i) in miLibroDeRecetas" class="col-12 col-lg-4 p-4 my-3 m-md-4 card-receta-home">
           <div class="row  div-categ d-flex">
-             <div class="col-2">
+             <div class="col-5 col-sm-2">
                 <div class="ps-2 pt-1">
                    <img src="./img/icons/meal_icon80.png" alt="icono cubiertos">
                 </div>
               </div>
-              <div class="col-10 pt-4">
+              <div class="col-7 col-sm-10 pt-4">
               <span class="p-categoria">{{receta.categoria}}</span>
             </div>
           </div>
@@ -121,8 +121,8 @@ Vue.component('home',{
             <div class="col-6">
               <span class="p-nombre-receta">{{receta.nombre}}</span>
             </div>
-            <div class="col-6 img-card-receta">
-              <img class="img-fluid" :src="receta.imagen_ruta">
+            <div class="col-6 p-3">
+              <img class="img-fluid img-card-receta" :src="receta.imagen_ruta">
             </div>
           </div>
           <div class="row d-flex justify-content-center">

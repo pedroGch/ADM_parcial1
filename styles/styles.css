@@ -82,13 +82,14 @@ h3 {
 
 .p-nombre-receta {
     font-family: 'Dosis', sans-serif;
-    font-size: 1.9rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: #111111;
-    padding: 1rem 0 1rem 1rem;
+    padding: 1rem 0 1rem 0rem;
 }
 .me-gusta {
         font-weight: 600;
+        font-size: 0.8rem;
 }
 
 .img-card-receta {
@@ -99,7 +100,7 @@ h3 {
 .div-categ {
     background-color: #F0DEDE;
     margin-bottom: 1rem;
-    padding: 1rem;
+    padding: 0.5rem 0 0.5rem 0;
 }
 
 .boton-card-receta {
@@ -109,4 +110,48 @@ h3 {
     text-transform: uppercase;
     font-weight: 600;
     padding: 1rem;
+}
+
+.icono-corazon {
+    height: 20%;
+    width: 20%;
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+    .p-nombre-receta {
+        font-size: 1.9rem;
+        padding: 1rem 0 1rem 1rem;
+    }
+
+    .div-categ {
+        margin-bottom: 1rem;
+        padding: 1rem;
+    }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+    .p-categoria {
+        padding: 1rem 0 1rem 2.3rem;
+    }
+
+    .p-nombre-receta {
+        padding: 0;
+    }
+}
+
+/*X-Large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+
+}
+
+/*XX-Large devices (larger desktops, 1400px and up)*/
+@media (min-width: 1400px) {
+
 }
