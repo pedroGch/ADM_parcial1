@@ -38,7 +38,7 @@ Vue.component('form-recetas',{
   },
   template:
   `
-    <div id="calificar" class="d-flex">
+    <div id="calificar" class="d-flex justify-content-center mb-4">
       <div class="container card-ingresar-receta p-4 mx-2">
         <div class= "row">
           <div class="col-12 text-center pb-3">
@@ -67,79 +67,80 @@ Vue.component('form-recetas',{
           <span>{{err_categoria}}</span>
         </div>  
 
-        <div class="row mb-3">
-          <div class="col-12">
-            <h2>Lista de ingredientes</h2>
-          </div> 
-          <ul>
-            <li v-for= "(i, key) in ingredientes">
-              <div class="row">
-                <div class="col-6">
-                  {{i.nombre}} {{i.cantidad}} {{i.unidad}}
+        <div class="container-carga-individual p-3 py-4">
+          <div class="row mb-3">
+            <div class="col-12">
+              <h2 class="h2-form" >Lista de ingredientes</h2>
+            </div>
+            <ul>
+              <li v-for= "(i, key) in ingredientes">
+                <div class="row">
+                  <div class="col-6">
+                    {{i.nombre}} {{i.cantidad}} {{i.unidad}}
+                  </div>
+                  <div class="col-6">
+                    <button v-on:click="eliminarIngrediente(key)">x</button>
+                  </div>
                 </div>
-                <div class="col-6">
-                  <button v-on:click="eliminarIngrediente(key)">x</button>
+              </li>
+            </ul>
+          </div>
+          <div class="column">
+            <form v-on:submit.prevent="ingresarIngrediente" class="row" v-show="mostrar">
+              <div class="col-12 col-md-5  mt-2">
+                <div class="form-floating">
+                  <input class="form-control"  v-model="nombre_ingrediente" type="text" name="nombre_ingrediente" id="nombre_ingrediente" placeholder="ingrediente">
+                  <label class="form-label" for="nombre_ingrediente">ingrediente</label>
                 </div>
               </div>
-            </li>
-          </ul>
+              <div class="col-6 col-md-4 mt-2">
+                <div class="form-floating">
+                  <input class="form-control" type="number" v-model="cantidad_ingrediente" name="cantidad_ingrediente" id="cantidad_ingrediente" placeholder="cantidad">
+                  <label class="form-label" for="cantidad_ingrediente">cantidad</label>
+                </div>
+              </div>
+              <div class="col-6 col-md-3  mt-2">
+                <div class="form-floating">
+                  <select name="unidadSelect" id="unidadSelect" v-model="unidad_nombre" class="form-select" aria-label="Categoria">
+                    <option selected disabled>medida</option>
+                    <option v-for = "u in unidades">{{u.nombre}}</option>
+                  </select>
+                  <label for="unidadSelect">Unidad</label>
+                </div>
+              </div>
+          
+              <div class="d-flex">
+                <div class="flex-shrink col-7 mt-3 d-flex justify-content-center">
+                  <input type="submit" value="agregar ingrediente" class="boton-formulario">
+                </div>
+                <div class="col-5 mt-3 d-flex justify-content-center">
+                  <input v-on:click="limpiarCamposIngredientes" type="reset" value="cancelar"  class="boton-formulario">
+                </div>
+              </div>
+            </form>
+            <span>{{err_ingredientes}}</span>
+            <div v-if="mostrarBoton" class="col-12 mt-3">
+              <button v-on:click="mostrarForm" class="boton-formulario">Agregar nuevo ingrediente</button>
+            </div>
+          </div>
         </div>
 
-        <div class="column">
-          <form v-on:submit.prevent="ingresarIngrediente" class="row" v-show="mostrar">
-
-            <div class="col-5">
-              <div class="form-floating">
-                <input class="form-control"  v-model="nombre_ingrediente" type="text" name="nombre_ingrediente" id="nombre_ingrediente" placeholder="ingrediente">
-                <label class="form-label" for="nombre_ingrediente">ingrediente</label>
-              </div>
+        <div class="row container-carga-individual p-3 py-4 mt-3 mx-1">
+        <div class="col-12 p-3">
+              <h2 class="h2-form">Preparación</h2>
             </div>
-
-            <div class="col-4">
-              <div class="form-floating">
-                <input class="form-control" type="number" v-model="cantidad_ingrediente" name="cantidad_ingrediente" id="cantidad_ingrediente" placeholder="cantidad">
-                <label class="form-label" for="cantidad_ingrediente">cantidad</label>
-              </div>
-            </div>
-
-            <div class="col-3">
-              <div class="form-floating">
-                <select name="unidadSelect" id="unidadSelect" v-model="unidad_nombre" class="form-select" aria-label="Categoria">
-                  <option selected disabled>medida</option>
-                  <option v-for = "u in unidades">{{u.nombre}}</option>
-                </select>
-                <label for="unidadSelect">Unidad</label>
-              </div>  
-            </div>            
-          
-            <div class="col-6 mt-3">
-              <input type="submit" value="agregar ingrediente">
-            </div>
-
-            <div class="col-6 mt-3">
-              <input v-on:click="limpiarCamposIngredientes" type="reset" value="cancelar">
-            </div>
-
-          </form>
-          <span>{{err_ingredientes}}</span>
-          <div v-if="mostrarBoton" class="col-12 mt-3">
-            <button v-on:click="mostrarForm">Agregar nuevo ingrediente</button>
-          </div>
-        </div>  
-
-        <div class="row">
           <div class="col-12 mt-3">
             <textarea v-model="preparacion" class="w-100" name="preparacion" placeholder="Preparación"/>
           </div>
           <span>{{err_preparacion}}</span>
         </div>
-        <div class="col-12 mt-5">
+        <div class="col-12 mt-5 d-flex justify-content-center">
           <input type="file" @change="subirImagen($event)">
         </div>
         
         <div class="row">
-        <div class="col-12 mt-5">
-          <button class="w-100" v-on:click="guardarReceta">Guardar receta</button>
+        <div class="col-12 mt-5 d-flex justify-content-center pb-4">
+          <button class="boton-formulario" v-on:click="guardarReceta">Guardar receta</button>
         </div>
       </div>
       </div>
