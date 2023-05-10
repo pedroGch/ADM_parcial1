@@ -37,6 +37,10 @@ header {
 
 }
 
+p {
+    font-size: 1rem;
+}
+
 h1 {
     font-family: 'Dosis', sans-serif;
     font-size: 2rem;
@@ -110,6 +114,8 @@ h3 {
     text-transform: uppercase;
     font-weight: 600;
     padding: 1rem;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .icono-corazon {
@@ -125,9 +131,39 @@ h3 {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
+.h2-form {
+    font-size: 1.5rem
+}
+
+.boton-formulario {
+    background-color: #C9ADAD;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    color: #111111;
+    text-transform: uppercase;
+    font-weight: 800;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    font-size: 0.7rem;
+}
+
+.container-carga-individual {
+    background-color: #FFF8F7;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+textarea {
+    height: 150px;
+   }
+
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
 
+    .boton-formulario {
+        font-size: 0.9rem;
+        padding: 1rem;
+    }
 }
 
 /*Medium devices (tablets, 768px and up)*/
@@ -148,6 +184,14 @@ h3 {
     }
 
 
+    .h2-form {
+        font-size: 2rem
+    }
+
+    .boton-formulario {
+        padding: 1rem;
+        font-size: 1rem;
+    }
 }
 
 /*Large devices (desktops, 992px and up)*/
@@ -159,6 +203,8 @@ h3 {
     .p-nombre-receta {
         padding: 0;
     }
+
+
 }
 
 /*X-Large devices (large desktops, 1200px and up)*/
