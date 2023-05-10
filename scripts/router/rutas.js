@@ -1,13 +1,8 @@
-const inicio = { template: `
- 			<div>
-				<h1>inicio</h1> 
-			</div>`, name:'inicio' 
-}
 const principal = {template: `<home></home>`, name:"principal"}
 const ingresar_recetar = {template: `<form-recetas></form-recetas>`, name:"ingresar_recetar"}
 
 const routes = [
-  { path: '/', component: inicio },
+  { path: '/', component: principal },
   { path: '/home', component: principal },
   { path: '/ingresar_recetar', component: ingresar_recetar },
   { path: '*', redirect: '/' }

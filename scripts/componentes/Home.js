@@ -45,7 +45,7 @@ Vue.component('home',{
               alt: ""
             }
           ],
-          usuario: "Mabel",
+          usuario: "mabel",
 
           }
   },
