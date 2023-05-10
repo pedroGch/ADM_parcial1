@@ -50,7 +50,8 @@ Vue.component('form-recetas',{
           <div class="form-floating">
             <input class="form-control" v-model="nombreReceta" type="text" name="nombre_receta" id="nombre_receta" placeholder="Nombre de la receta">
             <label class="form-label" for="nombre_receta">Nombre de la receta</label>
-            <span>{{err_nombre}}</span>
+      
+            <span class="textoError">{{err_nombre}}</span>
           </div>
         </div>
 
@@ -64,7 +65,8 @@ Vue.component('form-recetas',{
             </select>
             <label for="categoriaSelect">Seleccione una categoria</label>
           </div>
-          <span>{{err_categoria}}</span>
+    
+          <span class="textoError">{{err_categoria}}</span>
         </div>  
 
         <div class="container-carga-individual p-3 py-4">
@@ -118,7 +120,8 @@ Vue.component('form-recetas',{
                 </div>
               </div>
             </form>
-            <span>{{err_ingredientes}}</span>
+      
+            <span class="textoError">{{err_ingredientes}}</span>
             <div v-if="mostrarBoton" class="col-12 mt-3">
               <button v-on:click="mostrarForm" class="boton-formulario">Agregar nuevo ingrediente</button>
             </div>
@@ -131,8 +134,9 @@ Vue.component('form-recetas',{
             </div>
           <div class="col-12 mt-3">
             <textarea v-model="preparacion" class="w-100" name="preparacion" placeholder="Preparación"/>
+      
+            <span class="textoError">{{err_preparacion}}</span>
           </div>
-          <span>{{err_preparacion}}</span>
         </div>
         <div class="col-12 mt-5 d-flex justify-content-center">
           <input type="file" @change="subirImagen($event)">
