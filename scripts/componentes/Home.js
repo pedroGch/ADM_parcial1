@@ -193,7 +193,7 @@ Vue.component('home',{
     }
   },
   mounted: function(){ //al insertar al DOM    
-    console.log(jsonlibroDeRecetas)
+    let jsonlibroDeRecetas = localStorage.getItem('libroDeRecetas');
 
     if (jsonlibroDeRecetas != undefined || jsonlibroDeRecetas != undefined){
       let libroDeRecetas = JSON.parse(jsonlibroDeRecetas)
