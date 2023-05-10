@@ -1,6 +1,7 @@
 Vue.component('form-recetas',{
   data:function(){
     return{
+          sombraError:false,
           unidades:[
             {"nombre": "a gusto" , "id": 0},
             {"nombre": "kg" , "id": 1},
@@ -48,7 +49,7 @@ Vue.component('form-recetas',{
 
         <div class="col-12 col-sm-12 mb-3">
           <div class="form-floating">
-            <input class="form-control" v-model="nombreReceta" type="text" name="nombre_receta" id="nombre_receta" placeholder="Nombre de la receta">
+            <input :class="{sombraError:sombraError}" class="form-control" v-model="nombreReceta" type="text" name="nombre_receta" id="nombre_receta" placeholder="Nombre de la receta">
             <label class="form-label" for="nombre_receta">Nombre de la receta</label>
       
             <span class="textoError">{{err_nombre}}</span>
@@ -56,7 +57,7 @@ Vue.component('form-recetas',{
         </div>
 
         <div class="col-12 mb-3">
-          <div class="form-floating">
+          <div :class="{sombraError:sombraError}" class="form-floating">
             <select name="categoria" id="categoriaSelect" v-model="categoriaSeleccionada" class="form-select" aria-label="Categoria">
               <option selected value="Categoria">Categoria</option>
               <option>Dulces</option>
@@ -65,9 +66,9 @@ Vue.component('form-recetas',{
             </select>
             <label for="categoriaSelect">Seleccione una categoria</label>
           </div>
-    
           <span class="textoError">{{err_categoria}}</span>
         </div>  
+        
 
         <div class="container-carga-individual p-3 py-4">
           <div class="row mb-3">
@@ -88,7 +89,7 @@ Vue.component('form-recetas',{
             </ul>
           </div>
           <div class="column">
-            <form v-on:submit.prevent="ingresarIngrediente" class="row" v-show="mostrar">
+            <form :class="{sombraError:sombraError}" v-on:submit.prevent="ingresarIngrediente" class="row" v-show="mostrar">
               <div class="col-12 col-md-5  mt-2">
                 <div class="form-floating">
                   <input class="form-control"  v-model="nombre_ingrediente" type="text" name="nombre_ingrediente" id="nombre_ingrediente" placeholder="ingrediente">
@@ -133,7 +134,7 @@ Vue.component('form-recetas',{
               <h2 class="h2-form">Preparación</h2>
             </div>
           <div class="col-12 mt-3">
-            <textarea v-model="preparacion" class="w-100" name="preparacion" placeholder="Preparación"/>
+            <textarea :class="{sombraError:sombraError}" v-model="preparacion" class="w-100" name="preparacion" placeholder="Preparación"/>
       
             <span class="textoError">{{err_preparacion}}</span>
           </div>
@@ -279,6 +280,7 @@ Vue.component('form-recetas',{
         bandera = false
         this.errores.preparacion = 'Es necesario que se describa la preparación.'
       }
+      this.sombraError = !bandera
       return bandera
 
     },
@@ -293,6 +295,11 @@ Vue.component('form-recetas',{
       this.errores.ingredientes = ""
       this.errores.categoria = ""
       this.errores.preparacion = ""
+      this.err_nombre = ""
+      this.err_categoria = ""
+      this.err_ingredientes = ""
+      this.err_preparacion = ""
+      this.sombraError = false
     },
     subirImagen:function (file){
 
