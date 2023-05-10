@@ -282,6 +282,7 @@ Vue.component('form-recetas',{
         bandera = false
         this.errores.preparacion = 'Es necesario que se describa la preparación.'
       }
+      this.sombraError = !bandera
       return bandera
 
     },
@@ -296,6 +297,11 @@ Vue.component('form-recetas',{
       this.errores.ingredientes = ""
       this.errores.categoria = ""
       this.errores.preparacion = ""
+      this.err_nombre = ""
+      this.err_categoria = ""
+      this.err_ingredientes = ""
+      this.err_preparacion = ""
+      this.sombraError = false
     },
     subirImagen:function (file){
 
